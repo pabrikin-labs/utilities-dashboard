@@ -1,14 +1,7 @@
-// DATA INFORMASI ALAT (Database)
-const equipInfo = {
-    'FURNACE': { title: 'BOILER FURNACE', body: 'Ruang bakar utama suhu tinggi (900-1100°C) tempat terjadinya konversi energi batubara menjadi panas.' },
-    'ESP': { title: 'ELECTROSTATIC PRECIPITATOR', body: 'Alat penangkap debu halus menggunakan medan listrik statis tegangan tinggi.' },
-    'STEAM': { title: 'MAIN STEAM HEADER', body: 'Jalur utama distribusi uap tekanan tinggi menuju proses produksi dan turbin.' },
-    'ELECTRICITY': { title: 'POWER GRID 20kV', body: 'Pusat distribusi kelistrikan dari Generator dan PLN menuju substation tiap plant.' },
-    'RAW WATER': { title: 'RAW WATER INTAKE', body: 'Sistem suplai air mentah sebelum diproses oleh Water Treatment Plant.' },
-    'AIR COMPRESSOR': { title: 'INSTRUMENT AIR', body: 'Sistem udara bertekanan kering untuk menggerakkan control valve di lapangan.' }
-};
+// HAPUS bagian const equipInfo dari file ini. Kita murni menggunakan database dari main.js!
 
 let zoomScale = 1, pointX = 0, pointY = 0, isPanning = false, startPos = { x: 0, y: 0 };
+let currentSvg = null; // Menyimpan referensi diagram yang sedang dilihat
 
 function resetZoom() { 
     zoomScale = 1; pointX = 0; pointY = 0; 
@@ -16,34 +9,47 @@ function resetZoom() {
 }
 
 function applyTransform() {
-    const svg = document.querySelector('.diagram-wrapper.active svg');
-    if (svg) svg.style.transform = `translate3d(${pointX}px, ${pointY}px, 0) scale(${zoomScale})`;
+    if (currentSvg) {
+        currentSvg.style.transform = `translate3d(${pointX}px, ${pointY}px, 0) scale(${zoomScale})`;
+    }
 }
 
-// Fungsi utama yang menangani Zoom, Pan, Tooltip, dan Animasi SVG
-function initZoomAndPan() {
-    const container = document.querySelector('.diagram-wrapper.active');
-    const svg = container ? container.querySelector('svg') : null;
-    if (!container || !svg) return;
+// ==========================================
+// 1. FUNGSI INTI: MEMASANG INTERAKSI KE SVG
+// ==========================================
+function attachInteractions(svg) {
+    if (!svg) return;
+    currentSvg = svg;
+    
+    // Pastikan container menangkap event mouse/wheel
+    const container = svg.parentElement;
+    if (!container) return;
 
-    // SCROLL ZOOM
+    // Reset posisi saat diagram baru dimuat
+    resetZoom();
+
+    // -- FITUR: SCROLL ZOOM --
     container.onwheel = (e) => {
         e.preventDefault();
         const delta = e.wheelDelta ? e.wheelDelta : -e.deltaY;
         const xs = (e.clientX - pointX) / zoomScale;
         const ys = (e.clientY - pointY) / zoomScale;
-        if (delta > 0) zoomScale *= 1.1; else zoomScale /= 1.1;
-        zoomScale = Math.min(Math.max(0.1, zoomScale), 15);
+        
+        if (delta > 0) zoomScale *= 1.1; 
+        else zoomScale /= 1.1;
+        
+        zoomScale = Math.min(Math.max(0.1, zoomScale), 15); // Batas zoom in/out
         pointX = e.clientX - xs * zoomScale;
         pointY = e.clientY - ys * zoomScale;
         applyTransform();
     };
 
-    // DRAG PAN
+    // -- FITUR: DRAG PAN (GESER) --
     container.onmousedown = (e) => { 
         e.preventDefault(); 
         startPos = { x: e.clientX - pointX, y: e.clientY - pointY }; 
         isPanning = true; 
+        container.style.cursor = 'grabbing';
     };
     window.onmousemove = (e) => { 
         if (!isPanning) return; 
@@ -51,21 +57,27 @@ function initZoomAndPan() {
         pointY = e.clientY - startPos.y; 
         applyTransform(); 
     };
-    window.onmouseup = () => isPanning = false;
+    window.onmouseup = () => {
+        isPanning = false;
+        if(container) container.style.cursor = 'grab';
+    };
 
-    // HOVER TOOLTIP
+    // -- FITUR: HOVER TOOLTIP --
     const popup = document.getElementById('info-popup');
-    if (popup) {
+    // Cek apakah equipInfo dari main.js sudah terbaca
+    if (popup && typeof equipInfo !== 'undefined') {
         svg.querySelectorAll('*').forEach(el => {
             const id = (el.getAttribute('id') || '').toUpperCase();
-            if (id === 'STM01' || id.startsWith('LINE')) { 
-                el.style.pointerEvents = 'none'; 
-                return; 
-            }
             
-            let key = Object.keys(equipInfo).find(k => id.includes(k) || el.textContent.toUpperCase().includes(k));
+            // Abaikan garis pipa atau elemen kosong agar tidak error
+            if (id === 'STM01' || id.startsWith('LINE') || el.tagName === 'g') return; 
+            
+            // Cari kecocokan ID dengan database equipInfo
+            let key = Object.keys(equipInfo).find(k => id.includes(k) || (el.textContent && el.textContent.toUpperCase().includes(k)));
+            
             if (key) {
-                el.style.cursor = 'help'; el.style.pointerEvents = 'all';
+                el.style.cursor = 'help'; 
+                el.style.pointerEvents = 'all';
                 el.onmouseenter = () => {
                     document.getElementById('popup-title').innerText = equipInfo[key].title;
                     document.getElementById('popup-body').innerText = equipInfo[key].body;
@@ -80,15 +92,55 @@ function initZoomAndPan() {
         });
     }
 
-    // ANIMATIONS
+    // -- TRIGGER ANIMASI KHUSUS --
     const fire = svg.getElementById('GLOW FIRE') || svg.querySelector('[id="GLOW FIRE"]');
     if (fire) fire.classList.add('furnace-glow');
     svg.querySelectorAll('[id^="blade"], [id^="BLADE"]').forEach(f => f.classList.add('fan-spin'));
 }
 
-// Alias agar fungsi tetap bisa dipanggil dari main.js tanpa error
+// ==========================================
+// 2. PEMICU MANUAL SAAT GANTI HALAMAN
+// ==========================================
+function initZoomAndPan() {
+    const activeContainer = document.querySelector('.diagram-wrapper.active');
+    if (!activeContainer) return;
+    
+    const svg = activeContainer.querySelector('svg');
+    if (svg) attachInteractions(svg);
+}
+
+// ==========================================
+// 3. RADAR PINTAR (MUTATION OBSERVER)
+// ==========================================
+// Radar ini dengan sabar menunggu file SVG selesai disuntikkan oleh main.js
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+            mutation.addedNodes.forEach(node => {
+                if (node.tagName && node.tagName.toLowerCase() === 'svg') {
+                    // Begitu SVG masuk ke wadah yang aktif, langsung pasang interaksinya!
+                    if (node.parentElement.classList.contains('active')) {
+                        attachInteractions(node);
+                    }
+                }
+            });
+        }
+    });
+});
+
+// Nyalakan radar saat halaman pertama kali diload
+window.addEventListener('load', () => {
+    document.querySelectorAll('.diagram-wrapper').forEach(wrapper => {
+        observer.observe(wrapper, { childList: true });
+    });
+    
+    // Tembakan ekstra untuk memastikan sistem tidak terlewat
+    setTimeout(initZoomAndPan, 500);
+});
+
+// ==========================================
+// 4. ALIAS GLOBAL (Agar tidak error saat dipanggil oleh menu di HTML)
+// ==========================================
 window.initBoilerInteractions = initZoomAndPan;
 window.initZoomAndPan = initZoomAndPan;
-
-// Jalankan saat web pertama dimuat
-window.addEventListener('load', initZoomAndPan);
+window.resetZoom = resetZoom;
