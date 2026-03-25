@@ -73,22 +73,25 @@ function switchBoilerLayout(el, layoutKey) {
 // ==========================================
 function initFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
+    
     filterButtons.forEach(btn => {
+        // Hapus event lama agar tidak dobel
         btn.onclick = function() {
             this.classList.toggle('active');
-            const targetId = this.getAttribute('data-target');
-            const svgElements = document.querySelectorAll(`[id*="${targetId}"]`);
+            const targetId = this.getAttribute('data-target'); // Contoh: STEAM_LINES
+            const isActive = this.classList.contains('active');
             
-            svgElements.forEach(el => {
-                if(this.classList.contains('active')) {
-                    el.classList.remove('dimmed');
-                } else {
-                    el.classList.add('dimmed');
-                }
+            // Cari layer (Grup) di seluruh SVG yang memiliki ID cocok
+            const targetGroups = document.querySelectorAll(`[id*="${targetId}" i]`);
+            
+            targetGroups.forEach(group => {
+                group.style.opacity = isActive ? '1' : '0.05';
+                group.style.pointerEvents = isActive ? 'all' : 'none';
             });
         };
     });
 }
+
 
 // Live Clock
 function updateClock() {

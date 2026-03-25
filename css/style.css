@@ -17,340 +17,103 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Exo 2', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+svg text, svg tspan { font-family: 'Share Tech Mono', monospace !important; }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Exo 2', sans-serif;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; 
-}
-
-/* --- FORCE FONT UNTUK SVG --- */
-svg text, svg tspan {
-    font-family: 'Share Tech Mono', monospace !important;
-}
-
-/* --- HEADER & NAVIGATION --- */
-header {
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-  border-bottom: 2px solid var(--accent-blue);
-  padding: 10px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 40px rgba(56,189,248,0.15);
-  gap: 15px;
-}
-
-.header-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent-blue);
-  white-space: nowrap;
-}
-
-.logo-wrapper {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.8rem; 
-}
+/* --- UI COMPONENTS --- */
+header { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%); border-bottom: 2px solid var(--accent-blue); padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; z-index: 1000; box-shadow: 0 4px 40px rgba(56,189,248,0.15); gap: 15px; }
+.header-title { display: flex; align-items: center; gap: 12px; font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-blue); white-space: nowrap; }
+.logo-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 1.8rem; }
 .logo-wrapper svg { height: 100%; width: auto; }
-
-.nav-menu {
-  display: flex;
-  gap: 5px;
-  background: rgba(0,0,0,0.3);
-  padding: 5px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-}
-
-.nav-item {
-  padding: 6px 15px;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s;
-  letter-spacing: 1px;
-}
-
+.nav-menu { display: flex; gap: 5px; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 8px; border: 1px solid var(--border); }
+.nav-item { padding: 6px 15px; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; color: var(--text-dim); cursor: pointer; border-radius: 4px; transition: all 0.2s; letter-spacing: 1px; }
 .nav-item:hover { color: var(--text); background: rgba(56,189,248,0.1); }
-.nav-item.active { 
-  color: #fff; 
-  background: var(--accent-blue); 
-  box-shadow: 0 0 15px rgba(56,189,248,0.4);
-}
+.nav-item.active { color: #fff; background: var(--accent-blue); box-shadow: 0 0 15px rgba(56,189,248,0.4); }
 
-/* --- MAIN CONTENT --- */
-.main-content { 
-  flex: 1;
-  padding: 15px 40px; 
-  width: 100%; 
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.page-section {
-  display: none;
-  width: 100%;
-  height: 100%;
-}
-
-.page-section.active { 
-  display: flex;
-  flex-direction: column;
-}
-
-.sub-nav {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-blue) transparent;
-}
-
+.main-content { flex: 1; padding: 15px 40px; width: 100%; display: flex; flex-direction: column; overflow: hidden; }
+.page-section { display: none; width: 100%; height: 100%; }
+.page-section.active { display: flex; flex-direction: column; }
+.sub-nav { display: flex; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--accent-blue) transparent; }
 .sub-nav::-webkit-scrollbar { height: 4px; }
 .sub-nav::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 10px; }
+.sub-item { padding: 5px 15px; font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--text-dim); cursor: pointer; border: 1px solid var(--border); border-radius: 4px; text-transform: uppercase; transition: 0.2s; white-space: nowrap; }
+.sub-item.active { background: rgba(56, 189, 248, 0.1); border-color: var(--accent-blue); color: var(--accent-blue); }
+.page-title { font-family: 'Rajdhani', sans-serif; color: var(--accent-yellow); font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.placeholder-card { background: var(--panel2); border: 1px dashed var(--border); padding: 30px; text-align: center; border-radius: 12px; color: var(--text-dim); flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; font-family: 'Rajdhani'; font-size: 1.2rem; }
 
-.sub-item {
-  padding: 5px 15px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  cursor: pointer;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  text-transform: uppercase;
-  transition: 0.2s;
-  white-space: nowrap;
-}
-
-.sub-item.active { 
-    background: rgba(56, 189, 248, 0.1);
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
-}
-
-.page-title {
-  font-family: 'Rajdhani', sans-serif;
-  color: var(--accent-yellow);
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.placeholder-card {
-  background: var(--panel2);
-  border: 1px dashed var(--border);
-  padding: 30px;
-  text-align: center;
-  border-radius: 12px;
-  color: var(--text-dim);
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-family: 'Rajdhani';
-  font-size: 1.2rem;
-}
-
-/* --- FILTER PANEL --- */
-.filter-panel {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap; 
-}
-
-.filter-btn {
-    background: transparent;
-    border: 1px solid var(--color);
-    color: var(--color);
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 5px rgba(0,0,0,0);
-}
-
+.filter-panel { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+.filter-btn { background: transparent; border: 1px solid var(--color); color: var(--color); padding: 6px 15px; border-radius: 20px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; transition: all 0.3s ease; box-shadow: 0 0 5px rgba(0,0,0,0); }
 .filter-btn:hover { box-shadow: 0 0 10px var(--color); }
 .filter-btn.active { background: var(--color); color: #0A0D14; box-shadow: 0 0 15px var(--color); }
 
-/* --- DIAGRAM WRAPPER --- */
-.diagram-wrapper {
-  position: relative;
-  background: #0A0D14;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  flex: 1;
-  width: 100%;
-  display: none; 
-  align-items: center;
-  justify-content: center;
-  cursor: grab;
-  user-select: none;
-}
+.diagram-wrapper { position: relative; background: #0A0D14; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; flex: 1; width: 100%; display: none; align-items: center; justify-content: center; cursor: grab; user-select: none; }
 .diagram-wrapper.active { display: flex; }
-.diagram-wrapper svg { 
-    display: block; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; 
-    transition: transform 0.05s ease-out; 
-    overflow: visible !important; /* Mencegah pemotongan efek Glow */
-}
+.diagram-wrapper svg { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform 0.05s ease-out; overflow: visible !important; }
 
-/* --- FOOTER --- */
-footer {
-  background: var(--panel);
-  border-top: 1px solid var(--border);
-  padding: 10px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  gap: 10px;
-}
-
+footer { background: var(--panel); border-top: 1px solid var(--border); padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--text-dim); gap: 10px; }
 .footer-status { display: flex; align-items: center; gap: 15px; }
 .status-indicator { display: flex; align-items: center; gap: 6px; color: var(--accent-green); }
 .dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 10px var(--accent-green); animation: pulse 1.5s infinite ease-in-out; }
 
-/* --- RESPONSIVE DESIGN --- */
-@media (max-width: 768px) {
-    header { flex-direction: column; padding: 15px 20px; align-items: center; text-align: center; }
-    .header-title { font-size: 1.1rem; flex-direction: column; gap: 5px; }
-    .logo-wrapper { height: 1.5rem; }
-    .nav-menu { width: 100%; justify-content: center; overflow-x: auto; }
-    .nav-item { padding: 6px 10px; font-size: 0.75rem; }
-    .main-content { padding: 10px 15px; }
-    footer { flex-direction: column; padding: 15px 20px; height: auto; text-align: center; }
-    .footer-status { flex-direction: column; gap: 5px; }
-    .footer-status span { display: none; }
-    .footer-copyright { font-size: 0.65rem; line-height: 1.4; }
-}
-
 /* =======================================================
-   ANIMATIONS & SVG EFFECTS
+   ANIMATIONS & SVG EFFECTS - VERSI FINAL (BERSIH)
    ======================================================= */
 
-/* 1. Mencegah kotak (rect) ikut jalan */
-svg rect:not([stroke="#777777"]) {
-    animation: none !important;
-    stroke-dasharray: none !important;
-}
-
-/* 2. Animasi Jalur Distribusi (Gresik Plant Overview) */
-/* Menggunakan bendera 'i' untuk case-insensitive agar lebih tahan typo */
-[id*="STEAM_LINES" i] path, [id*="STEAM_LINES" i] line, [stroke="#FFF600" i],
-[id*="ELECT_LINES" i] path, [id*="ELECT_LINES" i] line, [stroke="#D63C3C" i],
-[id*="WATER_LINES" i] path, [id*="WATER_LINES" i] line, [stroke="#41B9B1" i],
-[id*="COMP_LINES" i] path, [id*="COMP_LINES" i] line, [stroke="#24742F" i] {
+/* 1. KUNCI UTAMA: Animasi Garis Mengalir (Sapu Jagat Semua Warna Utilitas) */
+[stroke="#FFF600" i], [stroke="#D63C3C" i], [stroke="#41B9B1" i], [stroke="#24742F" i],
+[stroke="#0066FF" i], [stroke="#41BA4F" i], [stroke="#D37FCC" i], [stroke="#7F3779" i], 
+[stroke="#DB7241" i], [stroke="#977A58" i], [stroke="#806341" i], [stroke="#75EA83" i], [stroke="#90EAE6" i] {
     stroke-dasharray: 20 20 !important;
     animation: figmaDashFlow 4s linear infinite !important;
 }
 
-/* 3. Animasi Jalur Boiler Stoker */
-svg [stroke="#0066FF"], svg [stroke="#41BA4F"], svg [stroke="#D37FCC"], 
-svg [stroke="#7F3779"], svg [stroke="#DB7241"], 
-svg [stroke="#977A58"], svg [stroke="#806341"], 
-svg [stroke="#75EA83"], svg [stroke="#90EAE6"], svg rect[stroke="#777777"] {
-  stroke-dasharray: 20 20 !important;
-  animation: figmaDashFlow 4s linear infinite !important;
+/* 2. PROTEKSI: Kotak dan Lingkaran dilarang ikut bergerak */
+rect, circle, ellipse, polygon {
+    animation: none !important;
+    stroke-dasharray: none !important;
 }
 
-/* 4. Arah Aliran Khusus */
-svg [stroke="#806341"], svg [stroke="#977A58"] { animation-direction: reverse !important; }
-svg rect[stroke="#777777"] { animation: figmaDashFlow 15s linear infinite !important; }
-
-@keyframes figmaDashFlow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -240; } }
-
-/* 5. Efek Meredup (Filter) */
-.dimmed { opacity: 0.05 !important; pointer-events: none !important; }
-svg g, svg path, svg line { transition: opacity 0.3s ease; }
-
-/* 6. EFEK BERPENDAR (GLOW) - PERBAIKAN FINAL */
-#PETIR, .lightning-glow { 
-    animation: glowLightning 0.8s infinite alternate ease-in-out !important; 
+/* 3. KEYFRAME ALIRAN (Semua jalur akan mengalir NORMAL mengikuti arah Path dari Figma Anda) */
+@keyframes figmaDashFlow { 
+    from { stroke-dashoffset: 0; } 
+    to { stroke-dashoffset: -240; } 
 }
 
-/* Sinkronisasi dengan class .furnace-glow dari interactions.js */
-.furnace-glow, [id="GLOW FIRE" i] { 
+/* 4. EFEK GLOW / PENDAR (FUZZY MATCHING ID) */
+/* Cukup gunakan ID di Figma yang mengandung kata "GLOW" atau "FIRE", animasi akan otomatis nyala */
+[id*="GLOW" i], [id*="FIRE" i] { 
     animation: glowFurnace 2s infinite alternate ease-in-out !important; 
-    transition: filter 0.3s ease;
-}
-
-@keyframes glowLightning { 
-    0% { filter: brightness(1) drop-shadow(0 0 2px #DC3CCF); opacity: 0.8; } 
-    100% { filter: brightness(1.8) drop-shadow(0 0 15px #E274D9); opacity: 1; } 
+    transform-box: fill-box;
 }
 
 @keyframes glowFurnace { 
-    0% { 
-        filter: brightness(0.8) drop-shadow(0 0 5px rgba(239, 123, 69, 0.3)); 
-        opacity: 0.85;
-    } 
-    100% { 
-        filter: brightness(1.3) drop-shadow(0 0 40px #EF7B45); 
-        opacity: 1;
-    } 
+    0% { filter: brightness(0.8) drop-shadow(0 0 5px rgba(239, 123, 69, 0.3)); opacity: 0.85; } 
+    100% { filter: brightness(1.3) drop-shadow(0 0 40px #EF7B45); opacity: 1; } 
 }
 
-/* 7. Efek Kipas Berputar */
-.fan-spin { 
-    animation: spinFan 2s linear infinite !important; 
-    transform-box: fill-box !important; 
-    transform-origin: 50% 50% !important; 
-}
-@keyframes spinFan { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-/* 8. Efek Asap Cerobong */
-.smoke-anim { 
+/* 5. EFEK ASAP CEROBONG (FUZZY MATCHING ID) */
+/* Cukup gunakan ID di Figma yang mengandung kata "SMOKE" atau "ASAP" */
+[id*="SMOKE" i], [id*="ASAP" i] { 
     transform-box: fill-box; 
     transform-origin: center; 
-    animation: smokeRise 6s infinite ease-in forwards !important; 
+    animation: smokeRise 5s infinite ease-in forwards !important; 
 }
+
 @keyframes smokeRise { 
     0% { transform: translateY(0) scale(0.6); opacity: 0; } 
     20% { opacity: 0.7; } 
     100% { transform: translateY(-800px) scale(3.5); opacity: 0; } 
 }
 
-/* --- UI COMPONENTS --- */
+/* 6. EFEK KIPAS BERPUTAR (Mencari ID yang mengandung kata BLADE) */
+[id*="BLADE" i] { 
+    animation: spinFan 2s linear infinite !important; 
+    transform-box: fill-box !important; 
+    transform-origin: 50% 50% !important; 
+}
+@keyframes spinFan { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* --- POPUP TOOLTIP --- */
 .info-popup { position: fixed; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(12px); border: 1px solid var(--accent-blue); border-radius: 8px; padding: 16px; max-width: 280px; font-size: 0.85rem; color: #fff; z-index: 99999; pointer-events: none; opacity: 0; transition: opacity 0.2s; }
 .info-popup.visible { opacity: 1; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
