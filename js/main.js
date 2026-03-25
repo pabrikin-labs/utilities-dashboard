@@ -84,6 +84,6 @@ setInterval(updateClock, 1000);
 window.addEventListener('load', () => {
     updateClock();
     // Get all SVGs
-    loadSVG('assets/logo-wilmar.svg', 'logo-place');
+    loadSVG('assets/logo-pabrikin.svg', 'logo-place');
     loadSVG('assets/boiler75.svg', 'diagram-stoker');
 });
