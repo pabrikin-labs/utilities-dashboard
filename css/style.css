@@ -1,4 +1,4 @@
-/* --- PERBAIKAN IMPORT FONT (Hapus semua versi lama dan ganti dengan ini) --- */
+/* --- PERBAIKAN IMPORT FONT --- */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;800&display=swap');
 
 :root {
@@ -28,7 +28,7 @@ body {
   overflow: hidden; 
 }
 
-/* --- FORCE FONT UNTUK SVG (Ini yang akan memperbaiki tampilan diagram) --- */
+/* --- FORCE FONT UNTUK SVG --- */
 svg text, svg tspan {
     font-family: 'Share Tech Mono', monospace !important;
 }
@@ -44,6 +44,7 @@ header {
   flex-shrink: 0;
   z-index: 1000;
   box-shadow: 0 4px 40px rgba(56,189,248,0.15);
+  gap: 15px;
 }
 
 .header-title {
@@ -56,6 +57,7 @@ header {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--accent-blue);
+  white-space: nowrap;
 }
 
 .logo-wrapper {
@@ -64,7 +66,6 @@ header {
   justify-content: center;
   height: 1.8rem; 
 }
-
 .logo-wrapper svg { height: 100%; width: auto; }
 
 .nav-menu {
@@ -123,6 +124,7 @@ header {
   margin-bottom: 15px;
   border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
+  overflow-x: auto; /* Memungkinkan geser kiri-kanan di HP */
 }
 
 .sub-item {
@@ -136,9 +138,9 @@ header {
   border-radius: 4px;
   text-transform: uppercase;
   transition: 0.2s;
+  white-space: nowrap;
 }
 
-.sub-item:hover { border-color: var(--accent-blue); color: var(--text); }
 .sub-item.active { 
     background: rgba(56, 189, 248, 0.1);
     border-color: var(--accent-blue);
@@ -161,7 +163,7 @@ header {
 .placeholder-card {
   background: var(--panel2);
   border: 1px dashed var(--border);
-  padding: 50px;
+  padding: 30px;
   text-align: center;
   border-radius: 12px;
   color: var(--text-dim);
@@ -171,7 +173,7 @@ header {
   justify-content: center;
   flex-direction: column;
   font-family: 'Rajdhani';
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 /* --- DIAGRAM WRAPPER --- */
@@ -189,18 +191,8 @@ header {
   cursor: grab;
   user-select: none;
 }
-
-.diagram-wrapper.active {
-    display: flex;
-}
-
-.diagram-wrapper svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform 0.05s ease-out;
-}
+.diagram-wrapper.active { display: flex; }
+.diagram-wrapper svg { display: block; width: 100%; height: 100%; object-fit: contain; }
 
 /* --- FOOTER --- */
 footer {
@@ -214,34 +206,38 @@ footer {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.75rem;
   color: var(--text-dim);
+  gap: 10px;
 }
 
-.footer-status {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+.footer-status { display: flex; align-items: center; gap: 15px; }
+.status-indicator { display: flex; align-items: center; gap: 6px; color: var(--accent-green); }
+.dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 10px var(--accent-green); animation: pulse 1.5s infinite ease-in-out; }
 
-.status-indicator {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--accent-green);
-}
+/* --- RESPONSIVE DESIGN (MOBILE FIX) --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+        align-items: center;
+        text-align: center;
+    }
+    .header-title { font-size: 1.1rem; flex-direction: column; gap: 5px; }
+    .logo-wrapper { height: 1.5rem; }
+    .nav-menu { width: 100%; justify-content: center; overflow-x: auto; }
+    .nav-item { padding: 6px 10px; font-size: 0.75rem; }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent-green);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent-green);
-  animation: pulse 1.5s infinite ease-in-out;
-}
+    .main-content { padding: 10px 15px; }
+    .page-title { font-size: 1rem; justify-content: center; }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
+    footer {
+        flex-direction: column;
+        padding: 15px 20px;
+        height: auto;
+        text-align: center;
+    }
+    .footer-status { flex-direction: column; gap: 5px; }
+    .footer-status span { display: none; } /* Sembunyikan pemisah | di HP */
+    .footer-copyright { font-size: 0.65rem; line-height: 1.4; }
 }
 
 /* --- POPUP TOOLTIP --- */
@@ -252,30 +248,15 @@ footer {
   border: 1px solid var(--accent-blue);
   border-radius: 8px;
   padding: 16px;
-  max-width: 340px;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  max-width: 280px;
+  font-size: 0.85rem;
   color: #fff;
   z-index: 99999;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.2s, transform 0.2s;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+  transition: opacity 0.2s;
 }
-
-.info-popup.visible { opacity: 1; transform: translateY(0); }
-
-.info-popup-title {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-  color: var(--accent-yellow);
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 4px;
-}
+.info-popup.visible { opacity: 1; }
 
 /* --- ANIMATIONS --- */
 svg [stroke="#0066FF"], svg [stroke="#41BA4F"], svg [stroke="#D37FCC"], 
@@ -285,7 +266,6 @@ svg [stroke="#75EA83"], svg [stroke="#90EAE6"] {
   stroke-dasharray: 20 20 !important;
   animation: figmaDashFlow 4s linear infinite !important;
 }
-
 svg [stroke="#806341"], svg [stroke="#977A58"] { animation-direction: reverse !important; }
 svg rect[stroke="#777777"] { animation: figmaDashFlow 15s linear infinite !important; }
 
@@ -319,3 +299,4 @@ svg rect[stroke="#777777"] { animation: figmaDashFlow 15s linear infinite !impor
 }
 
 @keyframes figmaDashFlow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -240; } }
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
