@@ -1,4 +1,3 @@
-/* --- PERBAIKAN IMPORT FONT --- */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;800&display=swap');
 
 :root {
@@ -20,11 +19,11 @@
 body { background: var(--bg); color: var(--text); font-family: 'Exo 2', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 svg text, svg tspan { font-family: 'Share Tech Mono', monospace !important; }
 
-/* --- UI COMPONENTS --- */
 header { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%); border-bottom: 2px solid var(--accent-blue); padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; z-index: 1000; box-shadow: 0 4px 40px rgba(56,189,248,0.15); gap: 15px; }
 .header-title { display: flex; align-items: center; gap: 12px; font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-blue); white-space: nowrap; }
 .logo-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 1.8rem; }
 .logo-wrapper svg { height: 100%; width: auto; }
+
 .nav-menu { display: flex; gap: 5px; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 8px; border: 1px solid var(--border); }
 .nav-item { padding: 6px 15px; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; color: var(--text-dim); cursor: pointer; border-radius: 4px; transition: all 0.2s; letter-spacing: 1px; }
 .nav-item:hover { color: var(--text); background: rgba(56,189,248,0.1); }
@@ -39,6 +38,7 @@ header { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 10
 .sub-item { padding: 5px 15px; font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--text-dim); cursor: pointer; border: 1px solid var(--border); border-radius: 4px; text-transform: uppercase; transition: 0.2s; white-space: nowrap; }
 .sub-item.active { background: rgba(56, 189, 248, 0.1); border-color: var(--accent-blue); color: var(--accent-blue); }
 .page-title { font-family: 'Rajdhani', sans-serif; color: var(--accent-yellow); font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
 .placeholder-card { background: var(--panel2); border: 1px dashed var(--border); padding: 30px; text-align: center; border-radius: 12px; color: var(--text-dim); flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; font-family: 'Rajdhani'; font-size: 1.2rem; }
 
 .filter-panel { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
@@ -48,16 +48,29 @@ header { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 10
 
 .diagram-wrapper { position: relative; background: #0A0D14; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; flex: 1; width: 100%; display: none; align-items: center; justify-content: center; cursor: grab; user-select: none; }
 .diagram-wrapper.active { display: flex; }
-.diagram-wrapper svg { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform 0.05s ease-out; overflow: visible !important; }
+.diagram-wrapper svg { display: block; width: 100%; height: 100%; object-fit: contain; overflow: visible !important; }
 
 footer { background: var(--panel); border-top: 1px solid var(--border); padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--text-dim); gap: 10px; }
 .footer-status { display: flex; align-items: center; gap: 15px; }
 .status-indicator { display: flex; align-items: center; gap: 6px; color: var(--accent-green); }
 .dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 10px var(--accent-green); animation: pulse 1.5s infinite ease-in-out; }
 
+@media (max-width: 768px) {
+    header { flex-direction: column; padding: 15px 20px; align-items: center; text-align: center; }
+    .header-title { font-size: 1.1rem; flex-direction: column; gap: 5px; }
+    .logo-wrapper { height: 1.5rem; }
+    .nav-menu { width: 100%; justify-content: center; overflow-x: auto; }
+    .nav-item { padding: 6px 10px; font-size: 0.75rem; }
+    .main-content { padding: 10px 15px; }
+    footer { flex-direction: column; padding: 15px 20px; height: auto; text-align: center; }
+    .footer-status { flex-direction: column; gap: 5px; }
+    .footer-status span { display: none; }
+}
+
 /* =======================================================
-   ANIMATIONS & SVG EFFECTS - VERSI FINAL (BERSIH)
+   ANIMASI PIPA (TIDAK ADA LAGI FLOW-REVERSE)
    ======================================================= */
+rect, circle, ellipse, polygon { animation: none !important; stroke-dasharray: none !important; }
 
 /* 1. KUNCI UTAMA: Animasi Garis Mengalir (Target Group & Warna) */
 [id*="STEAM_LINES" i] path, [id*="ELECT_LINES" i] path, [id*="WATER_LINES" i] path, [id*="COMP_LINES" i] path,
@@ -90,20 +103,19 @@ rect, circle, ellipse, polygon {
 .furnace-glow, [id*="GLOW" i], [id*="FIRE" i] { 
     animation: glowFurnace 2.5s infinite alternate ease-in-out !important; 
     transform-box: fill-box;
+    transform-origin: center;
 }
-
 @keyframes glowFurnace { 
-    0% { filter: brightness(0.8) drop-shadow(0 0 5px rgba(239, 123, 69, 0.3)); opacity: 0.85; } 
-    100% { filter: brightness(1.3) drop-shadow(0 0 40px #EF7B45); opacity: 1; } 
+    0% { filter: brightness(0.8) drop-shadow(0 0 10px rgba(239, 123, 69, 0.4)); opacity: 0.85; } 
+    100% { filter: brightness(1.3) drop-shadow(0 0 50px #EF7B45); opacity: 1; } 
 }
 
 /* 6. EFEK ASAP CEROBONG */
 .smoke-anim, [id*="SMOKE" i], [id*="ASAP" i] { 
     transform-box: fill-box; 
     transform-origin: center; 
-    animation: smokeRise 5s infinite ease-in forwards !important; 
+    animation: smokeRise 6s infinite ease-in forwards !important; 
 }
-
 @keyframes smokeRise { 
     0% { transform: translateY(0) scale(0.6); opacity: 0; } 
     20% { opacity: 0.7; } 

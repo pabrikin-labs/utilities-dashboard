@@ -20,7 +20,7 @@
 <text id="FAME" fill="white" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="615.312" y="2337.43">FAME</tspan></text>
 <text id="SPLITTING" fill="white" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2888" y="1399.43">SPLITTING</tspan></text>
 </g>
-g id="STEAM_LINES">
+<g id="STEAM_LINES">
   <path id="yellow SOAP" d="M1362 863.501L1362 630.51L1539.01 453.502L1635.5 453.502" stroke="#FFF600" stroke-width="4" stroke-linecap="round"/>
   <path id="yellow TANK" d="M1459 535.498L1660.5 736.999L2741 736.999L2994.5 483.498" stroke="#FFF600" stroke-width="4" stroke-linecap="round"/>
   <path id="yellow HYDRO" d="M1190 969.303L839.499 969.303L604.803 1204L604.803 1346" stroke="#FFF600" stroke-width="4" stroke-linecap="round"/>

@@ -41,21 +41,25 @@ function initBoilerInteractions() {
         applyTransform();
     };
 
-    // -- EVENT: MOUSE DOWN (PAN START) --
-    container.onmousedown = (e) => { 
-        if (e.button !== 0) return; // Hanya klik kiri
-        e.preventDefault(); 
-        startPos = { x: e.clientX - pointX, y: e.clientY - pointY }; 
-        isPanning = true; 
-        container.style.cursor = 'grabbing';
+    // A. SCROLL MOUSE (DESKTOP)
+    wrapper.onwheel = (e) => {
+        e.preventDefault();
+        const xs = (e.clientX - posX) / scale;
+        const ys = (e.clientY - posY) / scale;
+        scale *= (e.deltaY > 0) ? 0.9 : 1.1;
+        scale = Math.min(Math.max(0.1, scale), 15);
+        posX = e.clientX - xs * scale;
+        posY = e.clientY - ys * scale;
+        apply();
     };
 
-    // -- EVENT: MOUSE MOVE (PANNING) --
-    window.onmousemove = (e) => { 
-        if (!isPanning) return; 
-        pointX = e.clientX - startPos.x; 
-        pointY = e.clientY - startPos.y; 
-        applyTransform(); 
+    // B. DRAG PAN (DESKTOP)
+    wrapper.onmousedown = (e) => {
+        if (e.button !== 0) return;
+        isDragging = true;
+        startX = e.clientX - posX;
+        startY = e.clientY - posY;
+        wrapper.style.cursor = 'grabbing';
     };
 
     // -- EVENT: MOUSE UP (PAN END) --
@@ -77,15 +81,12 @@ function initBoilerInteractions() {
         if (key) {
                 el.style.cursor = 'help'; 
                 el.style.pointerEvents = 'all';
-                el.onmouseenter = (e) => {
+                el.onmouseenter = () => {
                     document.getElementById('popup-title').innerText = equipInfo[key].title;
                     document.getElementById('popup-body').innerText = equipInfo[key].body;
                     popup.classList.add('visible');
                 };
-                el.onmousemove = (e) => {
-                    popup.style.left = (e.clientX + 20) + 'px';
-                    popup.style.top = (e.clientY + 20) + 'px';
-                };
+                el.onmousemove = (e) => { popup.style.left = (e.clientX + 20) + 'px'; popup.style.top = (e.clientY + 20) + 'px'; };
                 el.onmouseleave = () => popup.classList.remove('visible');
         }
     });
