@@ -82,7 +82,7 @@ svg [stroke="#0066FF"], svg [stroke="#41BA4F"], svg [stroke="#D37FCC"],
 svg [stroke="#7F3779"], svg [stroke="#D63C3C"], svg [stroke="#DB7241"], 
 svg [stroke="#FFF600"], svg [stroke="#977A58"], svg [stroke="#806341"], 
 svg [stroke="#75EA83"], svg [stroke="#90EAE6"] {
-    stroke-dasharray: 35 5 !important;
+    stroke-dasharray: 30 10 !important;
     animation: figmaDashFlow 4s linear infinite !important;
 }
 
