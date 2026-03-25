@@ -9,7 +9,7 @@ const equipInfo = {
   'FD FAN': { title: 'FORCED DRAFT FAN (FDF)', body: 'Kipas peniup udara pembakaran.' },
   'ID FAN': { title: 'INDUCED DRAFT FAN (IDF)', body: 'Kipas penghisap gas buang menuju cerobong (chimney).' },
   'BFP': { title: 'BOILER FEED PUMP (BFP)', body: 'Pompa air pengisi boiler dengan tekanan tinggi.' },
-  'AIR PREHEATER': { title: 'AIR PREHEATER (APH)', body: 'Pemanas udara pembakaran sebelum masuk ke furnace dengan menggunakan sisa panas dari gas buang.' },
+  'AIR HEATER': { title: 'AIR HEATER (APH)', body: 'Pemanas udara pembakaran sebelum masuk ke furnace dengan menggunakan sisa panas dari gas buang.' },
   'STEAM DRUM': { title: 'STEAM DRUM', body: 'Bejana pemisah antara uap jenuh dan air boiler.' },
   'SUPERHEATER': { title: 'SUPERHEATER (SH)', body: 'Pemanas steam lanjut menjadi steam kering untuk suplai ke steam turbine.' },
   'ECONOMIZER': { title: 'ECONOMIZER', body: 'Pemanas awal air umpan boiler memanfaatkan temperatur gas buang yang masih tinggi.' },

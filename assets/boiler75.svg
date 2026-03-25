@@ -79,7 +79,7 @@
 <text id="WATER TANK" transform="translate(2783 404)" fill="#90EAE6" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="28.3906" y="42.432">WATER TANK</tspan></text>
 <text id="FD FAN" transform="translate(2029 2339)" fill="white" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="0.234375" y="42.432">FD FAN</tspan></text>
 <text id="ID FAN" transform="translate(2979 2270)" fill="white" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="0.234375" y="42.432">ID FAN</tspan></text>
-<text id="AIR PREHEATER" fill="#75EA83" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2128" y="1898.43">AIR PREHEATER</tspan></text>
+<text id="AIR HEATER" fill="#75EA83" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2128" y="1898.43">AIR PREHEATER</tspan></text>
 <text id="ESP" fill="#E274D9" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2608" y="2348.43">ESP</tspan></text>
 <text id="FURNACE" fill="white" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="951.273" y="1335.43">FURNACE</tspan></text>
 <text id="BFP" transform="translate(2605 1080)" fill="white" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="0.117188" y="42.432">BFP</tspan></text>
