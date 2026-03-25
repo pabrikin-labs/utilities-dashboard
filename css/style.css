@@ -59,7 +59,9 @@ footer { background: var(--panel); border-top: 1px solid var(--border); padding:
    ANIMATIONS & SVG EFFECTS - VERSI FINAL (BERSIH)
    ======================================================= */
 
-/* 1. KUNCI UTAMA: Animasi Garis Mengalir (Sapu Jagat Semua Warna Utilitas) */
+/* 1. KUNCI UTAMA: Animasi Garis Mengalir (Target Group & Warna) */
+[id*="STEAM_LINES" i] path, [id*="ELECT_LINES" i] path, [id*="WATER_LINES" i] path, [id*="COMP_LINES" i] path,
+[id*="STEAM_LINES" i] line, [id*="ELECT_LINES" i] line, [id*="WATER_LINES" i] line, [id*="COMP_LINES" i] line,
 [stroke="#FFF600" i], [stroke="#D63C3C" i], [stroke="#41B9B1" i], [stroke="#24742F" i],
 [stroke="#0066FF" i], [stroke="#41BA4F" i], [stroke="#D37FCC" i], [stroke="#7F3779" i], 
 [stroke="#DB7241" i], [stroke="#977A58" i], [stroke="#806341" i], [stroke="#75EA83" i], [stroke="#90EAE6" i] {
@@ -73,16 +75,20 @@ rect, circle, ellipse, polygon {
     stroke-dasharray: none !important;
 }
 
-/* 3. KEYFRAME ALIRAN (Semua jalur akan mengalir NORMAL mengikuti arah Path dari Figma Anda) */
+/* 3. KUNCI INGGRIS: Kembalikan class reverse untuk membalik arah yang salah */
+.flow-reverse, [id*="REVERSE" i] { 
+    animation-direction: reverse !important; 
+}
+
+/* 4. KEYFRAME ALIRAN */
 @keyframes figmaDashFlow { 
     from { stroke-dashoffset: 0; } 
     to { stroke-dashoffset: -240; } 
 }
 
-/* 4. EFEK GLOW / PENDAR (FUZZY MATCHING ID) */
-/* Cukup gunakan ID di Figma yang mengandung kata "GLOW" atau "FIRE", animasi akan otomatis nyala */
-[id*="GLOW" i], [id*="FIRE" i] { 
-    animation: glowFurnace 2s infinite alternate ease-in-out !important; 
+/* 5. EFEK GLOW / PENDAR */
+.furnace-glow, [id*="GLOW" i], [id*="FIRE" i] { 
+    animation: glowFurnace 2.5s infinite alternate ease-in-out !important; 
     transform-box: fill-box;
 }
 
@@ -91,9 +97,8 @@ rect, circle, ellipse, polygon {
     100% { filter: brightness(1.3) drop-shadow(0 0 40px #EF7B45); opacity: 1; } 
 }
 
-/* 5. EFEK ASAP CEROBONG (FUZZY MATCHING ID) */
-/* Cukup gunakan ID di Figma yang mengandung kata "SMOKE" atau "ASAP" */
-[id*="SMOKE" i], [id*="ASAP" i] { 
+/* 6. EFEK ASAP CEROBONG */
+.smoke-anim, [id*="SMOKE" i], [id*="ASAP" i] { 
     transform-box: fill-box; 
     transform-origin: center; 
     animation: smokeRise 5s infinite ease-in forwards !important; 
@@ -105,7 +110,7 @@ rect, circle, ellipse, polygon {
     100% { transform: translateY(-800px) scale(3.5); opacity: 0; } 
 }
 
-/* 6. EFEK KIPAS BERPUTAR (Mencari ID yang mengandung kata BLADE) */
+/* 7. EFEK KIPAS BERPUTAR (Mencari ID yang mengandung kata BLADE) */
 [id*="BLADE" i] { 
     animation: spinFan 2s linear infinite !important; 
     transform-box: fill-box !important; 
