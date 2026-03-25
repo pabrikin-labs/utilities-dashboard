@@ -331,3 +331,38 @@ svg path.flow-forward,
 /* Efek meredup pada SVG jika dimatikan */
 svg g { transition: opacity 0.3s ease; }
 svg g.dimmed { opacity: 0.05 !important; pointer-events: none; }
+
+/* ... existing code ... */
+/* 2. Arah Bawaan (Default) */
+svg [stroke="#806341"], svg [stroke="#977A58"] { animation-direction: reverse !important; }
+svg rect[stroke="#777777"] { animation: figmaDashFlow 15s linear infinite !important; }
+
+/* === PERBAIKAN DISTRIBUSI (TAMBAHKAN KODE INI) === */
+
+/* 1. Mencegah kotak (rect) ikut jalan, kecuali kotak abu-abu di layout Stoker lama */
+svg rect:not([stroke="#777777"]) {
+    animation: none !important;
+    stroke-dasharray: none !important;
+}
+
+/* 2. Memaksa SEMUA garis di dalam grup layer Figma untuk jalan (Sapu Jagat) */
+#STEAM_LINES path, #STEAM_LINES line, #STEAM_LINES polyline,
+#ELECT_LINES path, #ELECT_LINES line, #ELECT_LINES polyline,
+#WATER_LINES path, #WATER_LINES line, #WATER_LINES polyline,
+#COMP_LINES path, #COMP_LINES line, #COMP_LINES polyline {
+    stroke-dasharray: 20 20 !important;
+    animation: figmaDashFlow 4s linear infinite !important;
+}
+
+/* 3. Menghidupkan fungsi Filter (Meredupkan layer SVG yang tidak aktif) */
+.dimmed { 
+    opacity: 0.05 !important; 
+    pointer-events: none !important; 
+    transition: opacity 0.3s ease; 
+}
+/* ================================================ */
+
+/* 3. OVERRIDE MANUAL (DIPERKUAT) */
+svg [stroke].flow-reverse, 
+svg path.flow-reverse,
+/* ... existing code ... */
