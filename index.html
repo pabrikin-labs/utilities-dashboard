@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ID.GRK.UTI00 POWER PLANT SYSTEM</title>
+<title>Utility Systems</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
   <div class="header-title">
     <!-- Kontainer Logo -->
     <span class="logo-wrapper" id="logo-place"></span>
-    GRESIK UTILITY SYSTEMS
+    UTILITY SYSTEMS DASHBOARD
   </div>
 
   <nav class="nav-menu">
@@ -32,44 +32,53 @@
   </section>
 
   <section id="page-boiler" class="page-section">
-    <div class="page-title">🔥 Boiler System Layout</div>
+    <div class="page-title">Boiler System</div>
     
     <div class="sub-nav">
-        <div class="sub-item active" onclick="switchBoilerLayout(this, 'stoker')">Boiler Stoker 75 TPH</div>
-        <div class="sub-item" onclick="switchBoilerLayout(this, 'cfb')">Boiler CFB</div>
-        <div class="sub-item" onclick="switchBoilerLayout(this, 'aux')">Auxiliary Boiler</div>
+        <div class="sub-item active" onclick="switchBoilerLayout(this, 'stoker')">Stoker Boiler</div>
+        <div class="sub-item" onclick="switchBoilerLayout(this, 'cfbc')">CFBC Boiler</div>
+        <div class="sub-item" onclick="switchBoilerLayout(this, 'gas')">Gas Boiler</div>
+        <div class="sub-item" onclick="switchBoilerLayout(this, 'firetube')">Fire Tube Boiler</div>
     </div>
 
-    <!-- Kontainer Diagram Boiler Stoker -->
-    <div class="diagram-wrapper active" id="diagram-stoker">
-      <div class="placeholder-card" id="loading-stoker">Memuat Diagram...</div>
+    <!-- CONTAINER Stoker Boiler -->
+    <div class="diagram-wrapper active" id="diagram-stoker-boiler">
+      <div class="placeholder-card" id="loading-stoker-boiler">Memuat Diagram...</div>
     </div>
 
-    <!-- Kontainer Boiler CFB -->
-    <div class="diagram-wrapper" id="diagram-cfb">
+    <!-- Container CFBC Boiler -->
+    <div class="diagram-wrapper" id="diagram-cfbc-boiler">
         <div class="placeholder-card">
-            [ BOILER CFB UNIT 2 ]<br>
-            <span style="font-size: 1rem; opacity: 0.6;">Menunggu File SVG...</span>
+            [ CFBC Boiler ]<br>
+            <span style="font-size: 1rem; opacity: 0.6;">Content in development...</span>
         </div>
     </div>
 
-    <!-- Kontainer Aux Boiler -->
-    <div class="diagram-wrapper" id="diagram-aux">
+    <!-- Container Gas Boiler -->
+    <div class="diagram-wrapper" id="diagram-gas-boiler">
         <div class="placeholder-card">
-            [ AUXILIARY BOILER UNIT ]<br>
-            <span style="font-size: 1rem; opacity: 0.6;">Menunggu File SVG...</span>
+            [ Gas Boiler ]<br>
+            <span style="font-size: 1rem; opacity: 0.6;">Content in development...</span>
         </div>
+
+    <!-- Container Gas Boiler -->
+    <div class="diagram-wrapper" id="diagram-fire-tube-boiler">
+        <div class="placeholder-card">
+            [ Fire Tube Boiler ]<br>
+            <span style="font-size: 1rem; opacity: 0.6;">Content in development...</span>
+        </div>
+    
     </div>
   </section>
 
   <section id="page-turbine" class="page-section">
-    <div class="page-title">🌀 Turbine & Generator</div>
-    <div class="placeholder-card">Halaman Sistem Turbin.</div>
+    <div class="page-title">Power Generation</div>
+    <div class="placeholder-card">Content in development...</div>
   </section>
 
   <section id="page-electrical" class="page-section">
-    <div class="page-title">⚡ Electrical Distribution</div>
-    <div class="placeholder-card">Halaman Sistem Kelistrikan.</div>
+    <div class="page-title">Water Treatment</div>
+    <div class="placeholder-card">Content in development...</div>
   </section>
 </div>
 
