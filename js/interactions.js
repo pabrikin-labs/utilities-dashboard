@@ -75,35 +75,39 @@ function attachInteractions(wrapper) {
     wrapper.resetZoom = () => { scale = 1; posX = 0; posY = 0; apply(); };
 }
 
-// ==========================================
-// ANIMATION & HOVER INJECTION
-// ==========================================
+
 function initializeSVGFeatures(svg) {
     if (!svg || svg.dataset.initialized) return;
     svg.dataset.initialized = 'true';
 
-    // Animation Injection
     svg.querySelectorAll('[id="GLOW FIRE"]').forEach(el => el.classList.add('furnace-glow'));
     svg.querySelectorAll('[id="SMOKE"]').forEach(el => el.classList.add('smoke-anim'));
     svg.querySelectorAll('[id^="blade"]').forEach(el => el.classList.add('fan-spin'));
 
-    // Hover Tooltip Logic
     const popup = document.getElementById('info-popup');
     if (popup && typeof equipInfo !== 'undefined') {
         svg.querySelectorAll('*').forEach(el => {
             const id = (el.getAttribute('id') || '').toUpperCase();
             if (!id || id.startsWith('LINE') || el.tagName === 'defs') return;
 
-            let key = Object.keys(equipInfo).find(k => id.includes(k) || (el.textContent && el.textContent.toUpperCase().includes(k)));
+            let key = Object.keys(equipInfo).find(k => {
+                if (id.includes(k)) return true;
+                if ((el.tagName === 'text' || el.tagName === 'tspan') && el.textContent.toUpperCase().includes(k)) return true;
+                return false;
+            });
+            
             if (key) {
                 el.style.cursor = 'help';
                 el.style.pointerEvents = 'all';
-                el.onmouseenter = () => {
+                el.onmouseenter = (e) => {
                     document.getElementById('popup-title').innerText = equipInfo[key].title;
                     document.getElementById('popup-body').innerText = equipInfo[key].body;
                     popup.classList.add('visible');
                 };
-                el.onmousemove = (e) => { popup.style.left = (e.clientX + 20) + 'px'; popup.style.top = (e.clientY + 20) + 'px'; };
+                el.onmousemove = (e) => {
+                    popup.style.left = (e.clientX + 20) + 'px';
+                    popup.style.top = (e.clientY + 20) + 'px';
+                };
                 el.onmouseleave = () => popup.classList.remove('visible');
             }
         });
