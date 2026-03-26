@@ -1,8 +1,8 @@
 // ==========================================
-// 1. ISOLASI STATE UNTUK TIAP DIAGRAM (Anti-Bocor antar Tab)
+// STATE ISOLATION FOR EACH DIAGRAM
 // ==========================================
 function attachInteractions(wrapper) {
-    if (wrapper.dataset.interacted) return; // Cegah dobel event
+    if (wrapper.dataset.interacted) return;
     wrapper.dataset.interacted = 'true';
 
     let scale = 1, posX = 0, posY = 0, startX = 0, startY = 0;
@@ -13,7 +13,7 @@ function attachInteractions(wrapper) {
         if (svg) svg.style.transform = `translate3d(${posX}px, ${posY}px, 0) scale(${scale})`;
     };
 
-    // A. SCROLL MOUSE (DESKTOP)
+    // Desktop Mouse Scroll
     wrapper.onwheel = (e) => {
         e.preventDefault();
         const xs = (e.clientX - posX) / scale;
@@ -25,7 +25,7 @@ function attachInteractions(wrapper) {
         apply();
     };
 
-    // B. DRAG PAN (DESKTOP)
+    // Desktop Pan Drag
     wrapper.onmousedown = (e) => {
         if (e.button !== 0) return;
         isDragging = true;
@@ -34,7 +34,7 @@ function attachInteractions(wrapper) {
         wrapper.style.cursor = 'grabbing';
     };
 
-    // C. INTEGRASI MOBILE (TOUCH & PINCH TO ZOOM)
+    // Mobile Integration Pan&Zoom
     let initialDist = null;
     let initialScale = 1;
 
@@ -76,18 +76,18 @@ function attachInteractions(wrapper) {
 }
 
 // ==========================================
-// 2. INJEKSI ANIMASI & HOVER (Dijalankan pasca Load)
+// ANIMATION & HOVER INJECTION
 // ==========================================
 function initializeSVGFeatures(svg) {
     if (!svg || svg.dataset.initialized) return;
     svg.dataset.initialized = 'true';
 
-    // A. Paksa Suntik Class Animasi (Api, Asap, Kipas) berdasarkan ID
+    // Animation Injection
     svg.querySelectorAll('[id="GLOW FIRE"]').forEach(el => el.classList.add('furnace-glow'));
     svg.querySelectorAll('[id="SMOKE"]').forEach(el => el.classList.add('smoke-anim'));
     svg.querySelectorAll('[id^="blade"]').forEach(el => el.classList.add('fan-spin'));
 
-    // B. Logika Hover Tooltip
+    // Hover Tooltip Logic
     const popup = document.getElementById('info-popup');
     if (popup && typeof equipInfo !== 'undefined') {
         svg.querySelectorAll('*').forEach(el => {
@@ -111,7 +111,7 @@ function initializeSVGFeatures(svg) {
 }
 
 // ==========================================
-// 3. RADAR MUTATION OBSERVER
+// RADAR MUTATION OBSERVER
 // ==========================================
 const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => mutation.addedNodes.forEach(node => {
@@ -132,4 +132,4 @@ window.resetZoom = () => {
     const activeWrapper = document.querySelector('.diagram-wrapper.active');
     if (activeWrapper && activeWrapper.resetZoom) activeWrapper.resetZoom();
 };
-window.initBoilerInteractions = () => {}; // Alias dummy agar main.js tidak error
+window.initBoilerInteractions = () => {};

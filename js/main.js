@@ -1,4 +1,4 @@
-// DATA INFORMASI ALAT (Database)
+// Equipment Information
 const equipInfo = {
   'FURNACE': { title: 'FURNACE', body: 'Ruang bakar utama suhu tinggi (~700 °C) tempat terjadinya konversi energi batubara menjadi panas. Perpindahan panas dominan terjadi melalui radiasi.' },
   'BOTTOM ASH': { title: 'BOTTOM ASH', body: 'Abu berat sisa pembakaran yang jatuh ke bagian bawah boiler untuk selanjutnya dibuang sebagai limbah.' },
@@ -48,7 +48,6 @@ function switchBoilerLayout(el, layoutKey) {
     }
 }
 
-// PERBAIKAN FATAL FILTER: Membidik ID eksak "STEAM_LINES" tanpa Fuzzy Matching agar tidak error
 function initFilters() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.onclick = function() {

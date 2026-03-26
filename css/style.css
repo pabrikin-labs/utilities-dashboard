@@ -69,14 +69,13 @@ footer { background: var(--panel); border-top: 1px solid var(--border); padding:
 
 
 /* =======================================================
-   ANIMASI PIPA (TIDAK ADA LAGI FLOW-REVERSE)
+   PIPELINE ANIMATION
    ======================================================= */
 svg rect[stroke], svg circle[stroke], svg ellipse[stroke], svg polygon[stroke] { 
     animation: none !important; 
     stroke-dasharray: none !important; 
 }
 
-/* Menyatukan semua target elemen berdasarkan ID Grup dan Warna menjadi satu aliran Forward Natural */
 #STEAM_LINES path, #ELECT_LINES path, #WATER_LINES path, #COMP_LINES path,
 svg [stroke="#0066FF"], svg [stroke="#41BA4F"], svg [stroke="#D37FCC"], 
 svg [stroke="#7F3779"], svg [stroke="#D63C3C"], svg [stroke="#DB7241"], 
@@ -92,7 +91,7 @@ svg [stroke="#75EA83"], svg [stroke="#90EAE6"] {
 }
 
 /* =======================================================
-   EFEK VISUAL: GLOW, SMOKE & SPIN
+   VISUAL EFFECTS: GLOW, RISE, SPIN
    ======================================================= */
 .furnace-glow { 
     animation: glowFurnace 2.5s infinite alternate ease-in-out !important; 
