@@ -19,7 +19,7 @@
         <text id="MAIN STEAM" fill="#ECE998" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2049.39" y="178.432">MAIN STEAM</tspan></text>
         
         <rect id="GLOW FIRE" x="513" y="757" width="1059" height="1362" fill="url(#paint4_radial_1874_211)"/>
-        <g id="SMOMKE">
+        <g id="SMOKE">
             <ellipse id="Ellipse 178" cx="3408" cy="619.5" rx="48" ry="45.5" fill="#6D6D6D"/>
             <ellipse id="Ellipse 179" cx="3357" cy="699.5" rx="24" ry="22.5" fill="#6D6D6D"/>
         </g>
