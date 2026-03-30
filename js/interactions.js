@@ -81,6 +81,7 @@ function initializeSVGFeatures(svg) {
     svg.dataset.initialized = 'true';
 
     svg.querySelectorAll('[id="GLOW FIRE"]').forEach(el => el.classList.add('furnace-glow'));
+    svg.querySelectorAll('[id="PETIR"]').forEach(el => el.classList.add('furnace-glow'));
     svg.querySelectorAll('[id="SMOKE"]').forEach(el => el.classList.add('smoke-anim'));
     svg.querySelectorAll('[id^="blade"]').forEach(el => el.classList.add('fan-spin'));
 

@@ -101,6 +101,8 @@
             <path id="LINE blue BFP to ECO" d="M2574.5 1043.5L2518.5 1120L2211 1120" stroke="#0066FF" stroke-width="6"/>
             <path id="LINE blue DEA to BFP" d="M2644 682L2644 861" stroke="#0066FF" stroke-width="6"/>
             <path id="LINE blue WATER TANK" d="M2789.67 428.999L2711.67 428.999L2642.35 498.315" stroke="#0066FF" stroke-width="6"/>
+            <text id="MAIN STEAM" fill="#ECE998" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2049.39" y="178.432">MAIN STEAM</tspan></text>
+            <text id="WATER TANK" transform="translate(2783 404)" fill="#90EAE6" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="28.3906" y="42.432">WATER TANK</tspan></text>
         </g>
 
         <g id="AIRGAS_LINES">
@@ -111,29 +113,27 @@
             <path id="LINE pink ESP to ID FAN" d="M2820 2161H2954" stroke="#D37FCC" stroke-width="6"/>
             <path id="LINE pink APH to ESP" d="M2350.5 1934.5L2350.5 2096.5L2398 2157.68L2472.9 2157.68" stroke="#D37FCC" stroke-width="6"/>
             <path id="LINE pink ECO to APH" d="M2213.5 1238L2310 1294L2310 1595.5" stroke="#D37FCC" stroke-width="6"/>
+            <text id="AMBIENT AIR" transform="translate(1698 2064)" fill="#90ED9B" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="0.929688" y="42.432">AMBIENT AIR</tspan></text>
         </g>
 
         <g id="COALASH_LINES">
             <path id="LINE brown FLY ASH" d="M2648.26 2421.91L2702.79 2481.9L2820.5 2481.9" stroke="#806341" stroke-width="6"/>
             <path id="LINE brown BOTTOM ASH" d="M1046.25 2501.34L1100.79 2561.34L1218.5 2561.34" stroke="#806341" stroke-width="6"/>
             <path id="LINE orange COAL" d="M318.001 1504.21L379.09 1565.3L379.09 1762.71" stroke="#DB7241" stroke-width="6"/>
+            <text id="COAL STORAGE" transform="translate(202 1393)" fill="#EFAA8A" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="54.1562" y="42.432">COAL </tspan><tspan x="15.2734" y="96.432">STORAGE</tspan></text>
+            <text id="BOTTOM ASH" fill="#977A58" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="1233.43" y="2582.43">BOTTOM ASH</tspan></text>
+            <text id="FLY ASH" fill="#977A58" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2842.27" y="2503.43">FLY ASH</tspan></text>
         </g>
         
-        <path id="PETIR" d="M2662.36 2075.47L2646.34 2168.59L2671.81 2165.93L2628.9 2261.87L2652.66 2174.33L2631.61 2176.53L2662.36 2075.47Z" fill="url(#paint5_linear_1874_211)"/>
-            
+    
         <g id="TRAVELLING GRATE">
-            <text fill="#D2D2D2" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="834.125" y="2139.43">TRAVELLING GRATE</tspan></text>
             <rect x="525" y="2038" width="1034" height="159" rx="79.5" fill="#3A3A3A" stroke="#777777" stroke-width="10" stroke-linecap="round" stroke-dasharray="25 25"/>
+            <text fill="#D2D2D2" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="834.125" y="2139.43">TRAVELLING GRATE</tspan></text>
         </g>
-
-        <text id="COAL STORAGE" transform="translate(202 1393)" fill="#EFAA8A" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="54.1562" y="42.432">COAL </tspan><tspan x="15.2734" y="96.432">STORAGE</tspan></text>
-        <text id="AMBIENT AIR" transform="translate(1698 2064)" fill="#90ED9B" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="0.929688" y="42.432">AMBIENT AIR</tspan></text>
-        <text id="WATER TANK" transform="translate(2783 404)" fill="#90EAE6" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="28.3906" y="42.432">WATER TANK</tspan></text>
-        <text id="BOTTOM ASH" fill="#977A58" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="1233.43" y="2582.43">BOTTOM ASH</tspan></text>
-        <text id="FLY ASH" fill="#977A58" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2842.27" y="2503.43">FLY ASH</tspan></text>
-        <text id="MAIN STEAM" fill="#ECE998" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="2049.39" y="178.432">MAIN STEAM</tspan></text>
+        
         <text id="FURNACE" fill="white" style="white-space: pre" xml:space="preserve" font-family="Share Tech Mono" font-size="48" letter-spacing="0em"><tspan x="951.273" y="1335.43">FURNACE</tspan></text>
-
+        <path id="PETIR" d="M2662.36 2075.47L2646.34 2168.59L2671.81 2165.93L2628.9 2261.87L2652.66 2174.33L2631.61 2176.53L2662.36 2075.47Z" fill="url(#paint5_linear_1874_211)"/>
+        
         <defs>
             <linearGradient id="paint5_linear_1874_211" x1="2636.18" y1="2078.2" x2="2655.08" y2="2259.13" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#DC3CCF"/>
