@@ -95,8 +95,8 @@
         <g id="STEAMWATER_LINES">
             <path id="LINE yellow MAIN STEAM" d="M1806.58 353.498L1806.58 205.5L1857.5 159.725L2012 159.725" stroke="#FFF600" stroke-width="6"/>
             <path id="LINE red DRUM to SUPER" d="M725.997 247.499L792.998 180.498L926.498 180.498L1050.5 304.5" stroke="#D63C3C" stroke-width="6"/>
-            <path id="LINE blue WATER WALL LEFT" d="M562 530L562 1703" stroke="#0066FF" stroke-width="6"/>
-            <path id="LINE blue DOWNCOMER" d="M651.549 509.5L651.549 774.89L1521 1050.5L1521 1926L1470 1993.36L562 1993.36L562 1702L468.998 1615.63L468.998 509.5" stroke="#0066FF" stroke-width="6"/>
+            <path id="LINE blue WATER WALL LEFT" d="M562 1703L562 530" stroke="#0066FF" stroke-width="6"/>
+            <path id="LINE blue DOWNCOMER" d="M468.998 509.5L468.998 1615.63L562 1702L562 1993.36L1470 1993.36L1521 1926L1521 1050.5L651.549 774.89L651.549 509.5" stroke="#0066FF" stroke-width="6"/>
             <path id="LINE blue ECO to DRUM" d="M2213.5 965.5L2273.5 905.5L2273.5 308.001L2220 241.501L1090.5 241.499L959.501 111L765.501 111L682.501 187.501" stroke="#0066FF" stroke-width="6"/>
             <path id="LINE blue BFP to ECO" d="M2574.5 1043.5L2518.5 1120L2211 1120" stroke="#0066FF" stroke-width="6"/>
             <path id="LINE blue DEA to BFP" d="M2644 682L2644 861" stroke="#0066FF" stroke-width="6"/>
