@@ -29,6 +29,29 @@ async function loadSVG(url, containerId) {
     }
 }
 
+function switchPortfolio(el, diagramKey) {
+    // 1. Update Tab
+    document.querySelectorAll('.sub-nav .sub-item').forEach(item => item.classList.remove('active'));
+    el.classList.add('active');
+
+    // 2. Switch Wrapper
+    document.querySelectorAll('.diagram-wrapper').forEach(wrap => {
+        wrap.classList.remove('active');
+        wrap.style.display = 'none';
+    });
+    const targetWrap = document.getElementById('diagram-' + diagramKey);
+    targetWrap.classList.add('active');
+    targetWrap.style.display = 'block';
+
+    // 3. Switch Filter Panel
+    document.querySelectorAll('.diagram-filter').forEach(f => f.style.display = 'none');
+    const targetFilter = document.getElementById('filter-' + diagramKey);
+    if(targetFilter) targetFilter.style.display = 'flex';
+
+    // 4. Reset Zoom
+    if(typeof resetZoom === 'function') resetZoom();
+}
+
 function switchPage(el, pageId) {
   document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
   el.classList.add('active');

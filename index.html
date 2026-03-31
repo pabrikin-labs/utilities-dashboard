@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utilities Dashboard</title>
+<title>Pabrikin Labs | Industrial Solutions</title>
 <link rel="icon" type="image/svg+xml" href="assets/logo-pabrikin.svg">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,158 +12,138 @@
 <header>
   <div class="header-title">
     <span class="logo-wrapper" id="logo-place"></span>
-    Utilities Dashboard
+    Pabrikin Labs
   </div>
 
   <nav class="nav-menu">
-    <div class="nav-item active" onclick="switchPage(this, 'overview')">Overview</div>
-    <div class="nav-item" onclick="switchPage(this, 'boiler')">Boiler</div>
-    <div class="nav-item" onclick="switchPage(this, 'distribution')">Distribution</div>
+    <div class="nav-item active" onclick="switchPage(this, 'home')">HOME</div>
+    <div class="nav-item" onclick="switchPage(this, 'projects')">PROJECTS</div>
+    <div class="nav-item" onclick="switchPage(this, 'about')">ABOUT US</div>
   </nav>
 </header>
 
 <div class="main-content">
-  <section id="page-overview" class="page-section active">
-    <div class="page-title">PLANT OVERVIEW</div>
-    
-    <div class="dashboard-grid">
-      <!-- KPI CARDS -->
-      <div class="stat-card">
-        <div class="stat-label">TOTAL STEAM PRODUCTION</div>
-        <div class="stat-value">72.4 <span class="stat-unit">TPH</span></div>
-        <div class="stat-trend positive">↑ 2.4% vs last hour</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">OVERALL EFFICIENCY</div>
-        <div class="stat-value">84.2 <span class="stat-unit">%</span></div>
-        <div class="stat-trend">Stable</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">FUEL CONSUMPTION</div>
-        <div class="stat-value">12.8 <span class="stat-unit">TPH</span></div>
-        <div class="stat-trend negative">↑ 0.5% (High CV Coal)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">POWER DEMAND</div>
-        <div class="stat-value">4.2 <span class="stat-unit">MW</span></div>
-        <div class="stat-trend positive">↓ 1.2% (Optimized)</div>
-      </div>
-
-      <!-- SYSTEM STATUS LIST -->
-      <div class="dashboard-panel span-2">
-        <div class="panel-header">Area Health Status</div>
-        <div class="status-row">
-          <span>Stoker Boiler 75 TPH</span>
-          <span class="status-tag status-ok">RUNNING</span>
-        </div>
-        <div class="status-row">
-          <span>Water Treatment Plant</span>
-          <span class="status-tag status-ok">NORMAL</span>
-        </div>
-        <div class="status-row">
-          <span>Steam Distribution Grid</span>
-          <span class="status-tag status-warn">PRESSURE LOW AT FRACT</span>
-        </div>
-        <div class="status-row">
-          <span>Coal Handling System</span>
-          <span class="status-tag status-ok">OPERATIONAL</span>
-        </div>
-      </div>
-
-      <!-- ALARM LOG -->
-      <div class="dashboard-panel span-2">
-        <div class="panel-header">Recent Alarms</div>
-        <div class="alarm-list">
-          <div class="alarm-item warn">
-            <span class="alarm-time">11:42</span>
-            <span class="alarm-desc">Economizer Outlet Temp High (> 230°C)</span>
-          </div>
-          <div class="alarm-item info">
-            <span class="alarm-time">11:30</span>
-            <span class="alarm-desc">Feedwater Pump B switched to Manual</span>
-          </div>
-          <div class="alarm-item crit">
-            <span class="alarm-time">10:15</span>
-            <span class="alarm-desc">ID Fan vibration detected at Bearing M2</span>
-          </div>
-        </div>
-      </div>
+  <!-- SECTION: HOME (Dikosongkan sesuai permintaan) -->
+  <section id="page-home" class="page-section active">
+    <div class="page-title">Selamat Datang di Pabrikin Labs</div>
+    <div class="placeholder-card">
+      <h3>Future of Industrial Solutions</h3>
+      <p style="margin-top: 10px; opacity: 0.7;">Halaman utama sedang dalam pengembangan konten marketing.</p>
     </div>
   </section>
 
-  <section id="page-boiler" class="page-section">
-    <div class="page-title">Boiler System</div>
+  <!-- SECTION: PROJECTS -->
+  <section id="page-projects" class="page-section">
     
-    <div class="sub-nav">
-        <div class="sub-item active" onclick="switchBoilerLayout(this, 'stoker')">Stoker Boiler</div>
-        <div class="sub-item" onclick="switchBoilerLayout(this, 'cfbc')">CFBC Boiler</div>
-        <div class="sub-item" onclick="switchBoilerLayout(this, 'gas')">Gas Boiler</div>
-        <div class="sub-item" onclick="switchBoilerLayout(this, 'firetube')">Fire Tube Boiler</div>
-    </div>
-
-    <div class="filter-panel">
-        <button class="filter-btn active" data-target="STEAMWATER_LINES" style="--color: #FFFFFF;">Steam & Water</button>
-        <button class="filter-btn active" data-target="AIRGAS_LINES" style="--color: #FFFFFF;">Air & Gas</button>
-        <button class="filter-btn active" data-target="COALASH_LINES" style="--color: #FFFFFF;">Coal & Ash</button>
-    </div>
-
-    <!-- CONTAINER Stoker Boiler -->
-    <div class="diagram-wrapper active" id="diagram-stoker">
-      <div class="placeholder-card" id="loading-stoker-boiler">Loading...</div>
-    </div>
-
-    <!-- Container CFBC Boiler -->
-    <div class="diagram-wrapper" id="diagram-cfbc">
-        <div class="placeholder-card">
-            [ CFBC Boiler ]<br>
-            <span style="font-size: 1rem; opacity: 0.6;">Content in development...</span>
+    <!-- 1. RECENT PROJECT (BAGIAN ATAS) -->
+    <div class="project-list-section" style="margin-bottom: 50px;">
+        <div class="page-title">Recent Projects</div>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-img-placeholder">[Foto Instalasi Boiler]</div>
+                <div class="project-info">
+                    <h3>Boiler Installation 75 TPH</h3>
+                    <p>Pemasangan sistem stoker boiler lengkap di Cilegon, Banten.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-placeholder">[Foto Jalur Perpipaan]</div>
+                <div class="project-info">
+                    <h3>Steam Distribution Audit</h3>
+                    <p>Optimalisasi dan audit jalur distribusi uap industri.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Container Gas Boiler -->
-    <div class="diagram-wrapper" id="diagram-gas">
-        <div class="placeholder-card">
-            [ Gas Boiler ]<br>
-            <span style="font-size: 1rem; opacity: 0.6;">Content in development...</span>
+    <!-- 2. PORTOFOLIO / VISUALISASI (BAGIAN BAWAH) -->
+    <div class="portfolio-visual-section">
+        <div class="page-title">Portofolio: System Visualization</div>
+        
+        <!-- Dashboard Overview dipindah ke sini -->
+        <div class="dashboard-grid" style="margin-bottom: 30px;">
+            <div class="stat-card">
+                <div class="stat-label">LIVE STEAM PROD.</div>
+                <div class="stat-value">72.4 <span class="stat-unit">TPH</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">PLANT EFFICIENCY</div>
+                <div class="stat-value">84.2 <span class="stat-unit">%</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">FUEL CONSUMPTION</div>
+                <div class="stat-value">12.8 <span class="stat-unit">TPH</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">SYSTEM STATUS</div>
+                <div class="stat-value" style="font-size: 1.5rem; color: var(--accent-green);">OPTIMAL</div>
+            </div>
         </div>
-    </div>
 
-    <!-- Container Firetube Boiler -->
-    <div class="diagram-wrapper" id="diagram-firetube">
-        <div class="placeholder-card">
-            [ Fire Tube Boiler ]<br>
-            <span style="font-size: 1rem; opacity: 0.6;">Content in development...</span>
+        <div class="sub-nav">
+            <div class="sub-item active" onclick="switchPortfolio(this, 'stoker')">Boiler System</div>
+            <div class="sub-item" onclick="switchPortfolio(this, 'distribution')">Distribution Network</div>
         </div>
-    
+
+        <!-- Filter Panel Dinamis -->
+        <div id="filter-container" style="margin-bottom: 15px;">
+            <!-- Filter Boiler -->
+            <div class="filter-panel diagram-filter" id="filter-stoker">
+                <button class="filter-btn active" data-target="STEAMWATER_LINES" style="--color: #FFFFFF;">Steam & Water</button>
+                <button class="filter-btn active" data-target="AIRGAS_LINES" style="--color: #FFFFFF;">Air & Gas</button>
+                <button class="filter-btn active" data-target="COALASH_LINES" style="--color: #FFFFFF;">Coal & Ash</button>
+            </div>
+            <!-- Filter Distribusi -->
+            <div class="filter-panel diagram-filter" id="filter-distribution" style="display: none;">
+                <button class="filter-btn active" data-target="STEAM_LINES" style="--color: #FFF600;">Steam</button>
+                <button class="filter-btn active" data-target="ELECT_LINES" style="--color: #D63C3C;">Power</button>
+                <button class="filter-btn active" data-target="WATER_LINES" style="--color: #41B9B1;">Water</button>
+                <button class="filter-btn active" data-target="COMP_LINES" style="--color: #24742F;">Inst. Air</button>
+            </div>
+        </div>
+
+        <!-- Wadah Diagram -->
+        <div class="diagram-container" style="min-height: 700px; border: 1px solid var(--border); border-radius: 12px; overflow: auto; position: relative; background: #000;">
+            <div class="diagram-wrapper active" id="diagram-stoker" style="position: absolute; inset: 0;">
+                <div class="placeholder-card">Loading Boiler Diagram...</div>
+            </div>
+            <div class="diagram-wrapper" id="diagram-distribution" style="position: absolute; inset: 0; display: none;">
+                <div class="placeholder-card">Loading Distribution Diagram...</div>
+            </div>
+        </div>
     </div>
   </section>
 
-  <section id="page-distribution" class="page-section">
-    <div class="page-title">Distribution System</div>
-    
-    <div class="filter-panel">
-        <button class="filter-btn active" data-target="STEAM_LINES" style="--color: #FFF600;">Steam</button>
-        <button class="filter-btn active" data-target="ELECT_LINES" style="--color: #D63C3C;">Power</button>
-        <button class="filter-btn active" data-target="WATER_LINES" style="--color: #41B9B1;">Water</button>
-        <button class="filter-btn active" data-target="COMP_LINES" style="--color: #24742F;">Inst. Air</button>
-    </div>
-
-    <div class="diagram-wrapper active" id="diagram-distribution">
-      <div class="placeholder-card" id="loading-distribution">Memuat Diagram Distribusi...</div>
+  <!-- SECTION: ABOUT US -->
+  <section id="page-about" class="page-section">
+    <div class="page-title">About Us & Contact</div>
+    <div class="about-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px;">
+        <div class="about-content">
+            <h3>Pabrikin Labs</h3>
+            <p>Partner strategis manufaktur dan optimasi energi industrial.</p>
+            <div class="contact-box" style="margin-top: 20px; font-family: 'Share Tech Mono'; color: var(--accent-blue);">
+                <p>📍 Cilegon, Banten, Indonesia</p>
+                <p>📧 contact@pabrikin.com</p>
+            </div>
+        </div>
+        <div class="contact-form" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" placeholder="Nama Lengkap" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px;">
+            <input type="email" placeholder="Email Perusahaan" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px;">
+            <textarea placeholder="Pesan Project" style="background: var(--panel); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 6px; height: 100px;"></textarea>
+            <button class="submit-btn" style="background: var(--accent-blue); color: #000; border: none; padding: 12px; border-radius: 6px; font-weight: 800; cursor: pointer;">KIRIM PESAN</button>
+        </div>
     </div>
   </section>
 </div>
 
 <footer>
   <div class="footer-status">
-    <div class="status-indicator">
-      <div class="dot"></div>SYSTEM STATUS: ONLINE
-    </div>
+    <div class="status-indicator"><div class="dot"></div>SYSTEM STATUS: ONLINE</div>
     <span>|</span> <span>LOCATION: CILEGON, BANTEN</span> <span>|</span>
     <span id="live-clock">00:00:00</span>
   </div>
   <div class="footer-copyright">
-    © 2026 <a href="https://linktr.ee/pabrikin?utm_source=linktree_profile_share" target="_blank" class="footer-link">Pabrikin Labs</a>
+    © 2026 <a href="https://linktr.ee/pabrikin" target="_blank" class="footer-link">Pabrikin Labs</a>
   </div>
 </footer>
 
