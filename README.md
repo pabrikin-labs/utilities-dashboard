@@ -106,9 +106,10 @@ This project is proprietary software owned by Pabrikin Labs. All rights reserved
 
 For business inquiries or project collaborations:
 
-- **Email**: info@pabrikin.com
-- **Website**: [www.pabrikin.com](https://www.pabrikin.com)
-- **Location**: Indonesia
+- **Instagram**: @pabrikinlabs
+- **Email**: pabrikin.labs@gmail.com
+- **Website**: -
+- **Location**: Surabaya, Indonesia
 
 ---
 
